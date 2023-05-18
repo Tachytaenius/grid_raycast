@@ -1,5 +1,3 @@
-// LEAVE NO TODOS! Check both files!
-
 mod raycast;
 
 use raycast::*;

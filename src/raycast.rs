@@ -31,7 +31,7 @@ impl Iterator for GridRaycast {
         if
             self.ray_start_x == self.ray_end_x &&
             self.ray_start_y == self.ray_end_y
-        { // TODO: Implement a good way to not do this check every iteration
+        { // Is there a good way to not do this check every iteration?
             if self.last_t.is_some() {
                 return None;
             } else {
