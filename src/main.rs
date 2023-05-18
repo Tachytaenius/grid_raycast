@@ -144,7 +144,6 @@ fn update_raycast(
 
     let raycast = new_grid_raycast(ray.start, ray.end, TILE_WIDTH, TILE_HEIGHT, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
     for raycast_result in raycast {
-        println!("({}, {}), {}", raycast_result.tile_x, raycast_result.tile_y, raycast_result.intersection_t);
         commands.spawn((
             ShapeBundle {
                 path: GeometryBuilder::build_as(&shapes::Circle {
@@ -158,5 +157,4 @@ fn update_raycast(
             IntersectionPoint
         ));
     }
-    println!("");
 }
