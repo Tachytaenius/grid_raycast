@@ -1,8 +1,5 @@
 // LEAVE NO TODOS! Check both files!
 
-// TODO: Test for special cases, including rays on the grid lines
-// TODO: Remove the print statements
-
 mod raycast;
 
 use raycast::*;
