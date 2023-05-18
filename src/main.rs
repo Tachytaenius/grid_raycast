@@ -147,7 +147,7 @@ fn update_raycast(
         commands.spawn((
             ShapeBundle {
                 path: GeometryBuilder::build_as(&shapes::Circle {
-                    center: ray.start.lerp(ray.end, raycast_result.intersection_t),
+                    center: ray.start.lerp(ray.end, raycast_result.t),
                     radius: 2.0
                 }),
                 ..default()

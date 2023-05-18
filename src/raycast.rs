@@ -21,7 +21,7 @@ pub struct GridRaycast {
 pub struct GridRaycastResult {
     pub tile_x: i32,
     pub tile_y: i32,
-    pub intersection_t: f32
+    pub t: f32
 }
 
 impl Iterator for GridRaycast {
@@ -42,7 +42,7 @@ impl Iterator for GridRaycast {
                     // This result is just arbitrarily choosing a direction that returns these tile coords in those cases.
                     tile_x: self.tile_x,
                     tile_y: self.tile_y,
-                    intersection_t: self.t
+                    t: self.t
                 });
             }
         }
@@ -56,7 +56,7 @@ impl Iterator for GridRaycast {
             let result = GridRaycastResult {
                 tile_x: self.tile_x,
                 tile_y: self.tile_y,
-                intersection_t: self.t
+                t: self.t
             };
             self.last_t = Some(self.t);
 
