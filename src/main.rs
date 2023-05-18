@@ -37,7 +37,7 @@ fn main() {
 }
 
 #[derive(Resource, Default)]
-struct RayPoints { // More like a line segment with direction information
+struct RayPoints { // More like a directed line segment
     start: Vec2,
     end: Vec2
 }
@@ -129,13 +129,6 @@ fn update_ray(
             ray.start = mouse_position;
         }
         ray.end = mouse_position;
-
-        // TEMP for testing special cases:
-        if mouse_buttons.pressed(MouseButton::Right) {
-            // If you swap these, the returned tile coords are different (correctly so)
-            ray.start = Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y);
-            ray.end = Vec2::new(GRID_OFFSET_X + TILE_WIDTH * 3.0, GRID_OFFSET_Y + TILE_HEIGHT * 3.0)
-        }
     }
 
     // Decided to compress this into a one-liner just for fun
@@ -151,7 +144,7 @@ fn update_raycast(
         commands.entity(entity).despawn();
     }
 
-    let raycast = line_tilemap_intersections_iterator_struct(ray.start, ray.end, TILE_WIDTH, TILE_HEIGHT, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
+    let raycast = new_grid_raycast(ray.start, ray.end, TILE_WIDTH, TILE_HEIGHT, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
     for raycast_result in raycast {
         println!("({}, {}), {}", raycast_result.tile_x, raycast_result.tile_y, raycast_result.intersection_t);
         commands.spawn((
