@@ -9,8 +9,8 @@ use bevy_prototype_lyon::prelude::*;
 
 const GRID_WIDTH: i32 = 20;
 const GRID_HEIGHT: i32 = 18;
-const TILE_WIDTH: f32 = 30.5;
-const TILE_HEIGHT: f32 = TILE_WIDTH; // TODO: Varied!
+const TILE_WIDTH: f32 = 40.5;
+const TILE_HEIGHT: f32 = 30.5;
 const GRID_OFFSET_X: f32 = 60.0;
 const GRID_OFFSET_Y: f32 = 72.5;
 
@@ -151,7 +151,7 @@ fn update_raycast(
         commands.entity(entity).despawn();
     }
 
-    let raycast = line_tilemap_intersections_iterator_struct(ray.start, ray.end, TILE_WIDTH, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
+    let raycast = line_tilemap_intersections_iterator_struct(ray.start, ray.end, TILE_WIDTH, TILE_HEIGHT, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
     for raycast_result in raycast {
         println!("({}, {}), {}", raycast_result.tile_x, raycast_result.tile_y, raycast_result.intersection_t);
         commands.spawn((

@@ -87,7 +87,7 @@ impl Iterator for GridRaycast {
     }
 }
 
-pub fn line_tilemap_intersections_iterator_struct(line_start: Vec2, line_end: Vec2, tile_size: f32, tilemap_position: Vec2) -> GridRaycast {
+pub fn line_tilemap_intersections_iterator_struct(line_start: Vec2, line_end: Vec2, tile_width: f32, tile_height: f32, tilemap_position: Vec2) -> GridRaycast {
     fn get_helpers(tile_size: f32, pos: f32, dir: f32) -> (i32, i32, f32, f32) {
         let tile = (pos / tile_size).floor() as i32; // floor makes a difference for negatives
 
@@ -108,8 +108,8 @@ pub fn line_tilemap_intersections_iterator_struct(line_start: Vec2, line_end: Ve
         return (tile, delta_tile, delta_t, delta_delta_t);
     }
 
-    let (tile_x, delta_tile_x, delta_t_x, delta_delta_t_x) = get_helpers(tile_size, line_start.x - tilemap_position.x, (line_end - line_start).x);
-    let (tile_y, delta_tile_y, delta_t_y, delta_delta_t_y) = get_helpers(tile_size, line_start.y - tilemap_position.y, (line_end - line_start).y);
+    let (tile_x, delta_tile_x, delta_t_x, delta_delta_t_x) = get_helpers(tile_width, line_start.x - tilemap_position.x, (line_end - line_start).x);
+    let (tile_y, delta_tile_y, delta_t_y, delta_delta_t_y) = get_helpers(tile_height, line_start.y - tilemap_position.y, (line_end - line_start).y);
 
     return GridRaycast {
         tile_x: tile_x,
