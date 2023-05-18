@@ -3,7 +3,8 @@
 // TODO: Test for special cases, including rays on the grid lines
 // TODO: Figure out raycasts starting on a tile edge
 // TODO: Remove the print statements
-// BUG: When you have a ray starting in the tile -1, -1, and it goes down by one pixel, the first non-initial result is -inf, and an assert fails
+// BUG: When you have rays going in one of the four cardinal directions, the first non-initial result is -inf, and an assert fails
+// BUG: Intersections behind the ray?
 
 mod raycast;
 
