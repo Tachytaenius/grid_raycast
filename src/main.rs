@@ -158,7 +158,7 @@ fn update_raycast(
     let raycast = line_tilemap_intersections_iterator_struct(ray.start, ray.end, TILE_WIDTH, Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y));
     for raycast_result in raycast {
         // TODO: Mark tiles
-        println!("{}", raycast_result.intersection_t);
+        println!("({}, {}), {}", raycast_result.tile_x, raycast_result.tile_y, raycast_result.intersection_t);
         commands.spawn((
             ShapeBundle {
                 path: GeometryBuilder::build_as(&shapes::Circle {
