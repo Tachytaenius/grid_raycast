@@ -38,6 +38,8 @@ impl Iterator for GridRaycast {
                 debug_assert!(self.t == 0.0); // Should be undefined, really
                 self.last_t = Some(self.t);
                 return Some(GridRaycastResult {
+                    // For rays with direction (mathematical definitions break down in programming) that start on a tile boundary, the initial tile coords depend on the direction.
+                    // This result is just arbitrarily choosing a direction that returns these tile coords in those cases.
                     tile_x: self.tile_x,
                     tile_y: self.tile_y,
                     intersection_t: self.t
