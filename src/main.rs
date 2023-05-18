@@ -16,8 +16,8 @@ const GRID_WIDTH: i32 = 20;
 const GRID_HEIGHT: i32 = 18;
 const TILE_WIDTH: f32 = 30.5;
 const TILE_HEIGHT: f32 = TILE_WIDTH; // TODO: Varied!
-const GRID_OFFSET_X: f32 = 10.0;
-const GRID_OFFSET_Y: f32 = 10.0;
+const GRID_OFFSET_X: f32 = 60.0;
+const GRID_OFFSET_Y: f32 = 72.5;
 
 fn main() {
     App::new()
