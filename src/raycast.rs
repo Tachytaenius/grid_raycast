@@ -86,7 +86,7 @@ pub fn line_tilemap_intersections_iterator_struct(line_start: Vec2, line_end: Ve
     // TODO: independent width and height, probably just needs to give different values to get_helpers
 
     fn get_helpers(tile_size: f32, pos: f32, dir: f32) -> (i32, i32, f32, f32) {
-        let tile = (pos / tile_size).floor() as i32 + 1; // floor makes a difference for negatives
+        let tile = (pos / tile_size).floor() as i32; // floor makes a difference for negatives
 
         let (delta_tile, delta_t);
         if dir > 0.0 {
