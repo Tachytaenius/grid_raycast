@@ -91,13 +91,13 @@ pub fn line_tilemap_intersections_iterator_struct(line_start: Vec2, line_end: Ve
         let (delta_tile, delta_t);
         if dir > 0.0 {
             delta_tile = 1;
-            delta_t = ((tile as f32 + 0.0) * tile_size - pos) / dir;
+            delta_t = ((tile as f32 + 1.0) * tile_size - pos) / dir;
         } else if dir == 0.0 {
             delta_tile = 0;
-            delta_t = ((tile as f32 + 0.0) * tile_size - pos) / dir;
+            delta_t = ((tile as f32 + 1.0) * tile_size - pos) / dir;
         } else {
             delta_tile = -1;
-            delta_t = ((tile as f32 - 1.0) * tile_size - pos) / dir;
+            delta_t = ((tile as f32 + 0.0) * tile_size - pos) / dir;
         }
 
         let delta_delta_t = delta_tile as f32 * tile_size / dir;
