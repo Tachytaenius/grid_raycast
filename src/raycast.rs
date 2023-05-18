@@ -74,6 +74,9 @@ impl Iterator for GridRaycast {
 
             if self.t == self.last_t.unwrap() {
                 println!("Skipped");
+                // Unlike what the code was intended to do, this actually ends up skipping all the but the *last* of a run of identical intersections.
+                // This is actually the right way to do it, though, because it returns intersection tile coordinates for the correct tiles when doing
+                // diagonals that go through corners and/or starting on a tile boundary (4-way or 2).
                 continue;
             }
 

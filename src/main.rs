@@ -1,7 +1,6 @@
 // LEAVE NO TODOS! Check both files!
 
 // TODO: Test for special cases, including rays on the grid lines
-// TODO: Figure out raycasts starting on a tile edge
 // TODO: Remove the print statements
 
 mod raycast;
@@ -132,13 +131,13 @@ fn update_ray(
         if mouse_buttons.pressed(MouseButton::Left) {
             ray.start = mouse_position;
         }
-
         ray.end = mouse_position;
-        if mouse_buttons.pressed(MouseButton::Right) {
-            // ray.end = ray.start;
 
-            // TEMP:
-            ray.start = Vec2::new(40.0, 45.0)
+        // TEMP for testing special cases:
+        if mouse_buttons.pressed(MouseButton::Right) {
+            // If you swap these, the returned tile coords are different (correctly so)
+            ray.start = Vec2::new(GRID_OFFSET_X, GRID_OFFSET_Y);
+            ray.end = Vec2::new(GRID_OFFSET_X + TILE_WIDTH * 3.0, GRID_OFFSET_Y + TILE_HEIGHT * 3.0)
         }
     }
 
